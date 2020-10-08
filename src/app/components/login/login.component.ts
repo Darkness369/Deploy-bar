@@ -47,7 +47,9 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private users: PermisosService,
     private _snackBar: MatSnackBar
-  ) {}
+  ) {
+    window.alert("Bienvenido")
+  }
 
   ngOnInit(): void {
     /*Cambiar color del fondo*/
