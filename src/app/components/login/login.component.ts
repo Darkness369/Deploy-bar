@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     private users: PermisosService,
     private _snackBar: MatSnackBar
   ) {
-    window.alert("Bienvenido")
+    // window.alert("Bienvenido")
   }
 
   ngOnInit(): void {
