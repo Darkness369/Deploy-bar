@@ -1,0 +1,109 @@
+<app-sidebar></app-sidebar>
+
+ <div class="contenedor animated fadeIn fast">
+
+
+  <h2>Recetario</h2>
+  <form #recetasForm="ngForm" (ngSubmit)="onSubmit(recetasForm)">
+    <!-- <input type="hidden" name="_id" [(ngModel)]="this.datosClientesService.selectClientes._id"> -->
+    <div class="form-group col-md-7 centro">
+      <label for="inputState">Cliente: </label>
+      <input style="margin-left: -3.5%;" type="text" list="clientes" class="form-control busqueda" name="nombre"
+        [(ngModel)]='selectedCliente' (change)="clientSearch(selectedCliente, recetasForm)">
+      <datalist id="clientes">
+     
+        <option *ngFor="let cliente of datosClientesService.DatosClientes" [value]="cliente.nombre"></option>
+
+      </datalist>
+    </div>
+    <input type="hidden" name="nombreCli" #name="ngModel" [(ngModel)]="recetasService.selectReceta.nombreCli">
+    <div class="form-group">
+      <label for="inputAddress">Nombre de Receta:</label>
+      <input type="text" name="nombreReceta" #name="ngModel" [(ngModel)]='recetasService.selectReceta.nombreReceta' class="form-control" id="nombreReceta" (change)="setRecipeName(nombreReceta)" placeholder="">
+    </div>
+    <div class="form-group">
+      <input type="hidden" class="form-control"  placeholder="idCliente" name="idCliente" [value]="idCliente">
+    </div>
+  <div class="form-row" >
+      <div class="form-group col-md-2">
+        <label for="inputState">Categoría:</label>
+          <input id="inputState-Categoria" list="1" class="form-control" name="categoria" #name="ngModel" [(ngModel)]="recetasService.selectReceta.categoria"
+          (change)="getCategoria(recetasService.selectReceta.categoria,recetasForm)">
+            <datalist  id="1">
+                <div *ngFor="let drink of bebidaService.info">
+                  <div *ngIf="drink.parent=='categoria'">
+                <option   [value]="drink.nombre"></option> 
+                  </div>
+              </div>
+            </datalist> 
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="inputState">Nombre Articulo:</label>
+          <input id="inputState-nombreArt"list="2"  class="form-control" name="nombreArt" #name="ngModel" [(ngModel)]="recetasService.selectReceta.nombreArt"
+          (change)="getArticulo(recetasService.selectReceta.nombreArt,recetasForm)">
+            <datalist  id="2">
+              <div *ngFor="let drink of datosInventarioService.info">
+                <div *ngIf="drink.categoria==categoria">
+                <option [value]="drink.nombreBebida"></option>  
+                </div>
+              </div>
+              <option  [value]="texto"></option>
+            </datalist> 
+      </div>
+      
+      <div class="form-group col-md-1">
+        <label for="inputState">Presentación:</label>
+          <a class="form-control">{{mlText}}</a>              
+          <input type="hidden" id="inputState4" class="form-control" name="presentacion" #name="ngModel" [(ngModel)]="recetasService.selectReceta.presentacion">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputState" >Cantidad Necesaria (Oz):</label>
+        <input id="inputState-cantidad"#name="ngModel" type="number" class="form-control" [(ngModel)]='recetasService.selectReceta.cantOz' name="cantOz" class="form-control"(change)="OZ(recetasService.selectReceta.cantOz)">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputState" >Cantidad Necesaria:</label>
+        <a id="inputState-cantidad"#name="ngModel" type="hidden" class="form-control" [(ngModel)]='recetasService.selectReceta.cantNecesaria' name="cantNecesaria" class="form-control">{{cantOz1}}</a>
+        
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputState">Código:</label>
+          <a class="form-control">{{cod}}</a>              
+          <input type="hidden" id="inputState5" class="form-control" name="codBebida" #name="ngModel" [(ngModel)]="recetasService.selectReceta.codigo">
+      </div>
+      
+    </div>
+    <div class="row form-group col-md-12" *ngFor="let row of Ingred">
+      <div class="form-group col-md-2">
+          <a type="text" class="form-control">{{row[0]}}</a>
+      </div>
+      <div class="form-group col-md-3">
+        <a type="text" class="form-control">{{row[1]}}</a>
+      </div>
+      <div class="form-group col-md-1">
+          <a type="text" class="form-control">{{row[2]}}</a>
+        </div>
+      <div class="form-group col-md-2">
+        <a type="text" class="form-control">{{row[3]}}</a>
+      </div>
+      <div class="form-group col-md-2">
+        <a type="text" class="form-control">{{row[4]}}</a>
+      </div>
+      <div class="form-group col-md-2">
+        <a type="text" class="form-control">{{row[5]}}</a>
+      </div>
+
+    </div>
+    
+  <br>
+    <div class="form-row centro">
+      <div  class="form-group col-md-4  centro">
+        <button type="button" class="art "  (click)="agregarArticulo(recetasForm)">Agregar nuevo articulo</button>
+      </div>
+    <button type="button" class="form-group col-md-1 reset" (click)="resetFormReceta(recetasForm)" value="Reset">Reset</button>
+
+      <input class="form-group col-md-1 reset" style="margin-left: 2.5%;" type="submit" value="Guardar">
+   
+    </div>
+  </form>
+</div>

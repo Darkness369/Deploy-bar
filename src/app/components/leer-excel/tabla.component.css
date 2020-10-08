@@ -1,0 +1,87 @@
+
+   /*COMPUTADORA*/
+
+ 
+   .t-padding{
+	margin-top: 3%;
+	text-align:center; 
+	margin-left:auto; 
+	margin-right:auto; 
+	width: 80%;
+	margin-bottom: 5%;
+	text-align: center;
+
+}
+   th{
+	width: 80px;
+	font-weight: 550;
+}
+   .letter-table{
+	background-color: #000000;
+color:white;
+}
+
+table{
+color:white;
+border: 3px solid rgb(0, 0, 0);
+}
+
+.custom-head{
+	padding-top: 7px;
+	padding-bottom: 7px;
+	background-color: #361f02c7;
+	
+}
+	td {
+		border-bottom: 1px solid rgb(73, 73, 73);
+		
+	}
+/*TELEFONO*/
+
+	@media only screen   and (max-width: 860px), (min-device-width: 878px)  and (max-device-width: 1024px)  {
+		.t-padding{
+			margin-top: 15%;
+			
+		   
+		}
+		table, thead, th, tbody,td, tr {
+            display: block;
+           
+        }
+
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+      
+    tr:nth-child(odd) {
+        background: #361f02c7;
+
+    }
+    
+		td {
+			border-bottom: 1px solid rgb(73, 73, 73);
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			position: absolute;
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+
+		td:nth-of-type(1):before { content: "Clave:"; }
+		td:nth-of-type(2):before { content: "Descripcion:"; }
+		td:nth-of-type(3):before { content: "Cantidad:"; }
+
+    }

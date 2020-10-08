@@ -1,0 +1,109 @@
+<app-sidebar></app-sidebar>
+  
+<div class="contenedor animated fadeIn fast">
+
+  <h2>Añadir Cliente</h2>
+  
+  <form #empresaForm="ngForm" (ngSubmit)="onSubmit(empresaForm)">
+    <input type="hidden" name="_id" #name="ngModel" [(ngModel)]="datosClientesService.selectClientes._id">
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="nombre" >Nombre del Cliente:</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" #name="ngModel" [(ngModel)]="datosClientesService.selectClientes.nombre" placeholder="Ejem: BarUnaMas" required autofocus >
+    </div>
+    <div class="form-group col-md-6">
+      <label for="correo" >Correo:</label>
+      <input type="email" class="form-control" id="correo" name="correo" #name="ngModel" [(ngModel)]="datosClientesService.selectClientes.correo" placeholder="ejemplo@gmail.com" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="telefono" >Teléfono:</label>
+      <input type="text" class="form-control" id="telefono" name="telefono" #name="ngModel" [(ngModel)]="datosClientesService.selectClientes.telefono" placeholder="Ejem: 6141234567" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="rfc" >RFC:</label>
+      <input type="text" class="form-control" id="rfc" name="rfc" #name="ngModel" [(ngModel)]="datosClientesService.selectClientes.rfc" placeholder="EJEM0011547" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="razonSocial" >Razón Social:</label>
+      <input type="text" class="form-control" id="razonSocial" name="razonSocial" #name="ngModel" [(ngModel)]="datosClientesService.selectClientes.razonSocial" placeholder="BARUNAMAS SA de CV" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="direccion" >Dirección:</label>
+      <input type="text" class="form-control" id="direccion" name="direccion" #name="ngModel" [(ngModel)]="datosClientesService.selectClientes.direccion" placeholder="Ejem: Calle del rio #123" required>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="colonia" >Colonia:</label>
+      <input type="text" class="form-control" id="colonia" name="colonia" #name="ngModel" [(ngModel)]="datosClientesService.selectClientes.colonia" placeholder="Ejem: Colonia del lago" required>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="estado" >Estado:</label>
+      <input type="text" class="form-control" id="estado" name="estado" #name="ngModel" [(ngModel)]="datosClientesService.selectClientes.estado" placeholder="Ejem: Chihuahua" required>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="cp" >Código Postal:</label>
+      <input type="text" class="form-control" id="cp" name="cp" #name="ngModel" [(ngModel)]="datosClientesService.selectClientes.cp" placeholder="Ejem: 31510" required>
+    </div>
+    
+  </div>
+
+    <div class="form-row centro">
+    <button type="button" class=" reset" (click)="resetForm(empresaForm)" value="Reset">Reset</button>
+    <button style="margin-left: 15%;" type="submit" name="" class=" reset" [disabled]="!empresaForm.valid" >Guardar</button>
+    </div>
+  </form>
+
+</div>
+
+<!-- Aqui empieza la tabla equisde -->
+<br>
+
+<section> <!-- Tabla Responsiva -->
+
+  <div class="t-padding  animated fadeIn fast">
+    <table role="table"  class="letter-table table table-sm table-dark" matSort (matSortChange)="sortData($event)">
+      <thead  role="rowgroup" class="letter-table ">
+        <tr  role="row" class="letter-table">
+          <th role="columnheader" class="custom-head" mat-sort-header="nombre">Cliente:</th>
+          <th role="columnheader" class="custom-head" mat-sort-header="correo">Correo:</th>
+          <th role="columnheader" class="custom-head" mat-sort-header="telefono">Teléfono:</th>
+          <th role="columnheader" class="custom-head" mat-sort-header="rfc">RFC:</th>
+          <th role="columnheader" class="custom-head" mat-sort-header="razonSocial">Razón social:</th>
+          <th role="columnheader" class="custom-head" mat-sort-header="direccion">Dirección:</th>
+          <th role="columnheader" class="custom-head" mat-sort-header="colonia">Colonia:</th>
+          <th role="columnheader" class="custom-head" mat-sort-header="estado">Estado:</th>
+          <th role="columnheader" class="custom-head" mat-sort-header="cp">CP:</th>
+          <th role="columnheader" class="custom-head" >PDF:</th>
+          <th role="columnheader" class="custom-head" >Editar:</th>
+          <th role="columnheader" class="custom-head" >Borrar:</th>
+        </tr>
+      </thead>
+      <tbody role="rowgroup">
+        <form #empresaForm="ngForm" (ngSubmit)="onSubmit(empresaForm)" >
+
+        </form>
+        <tr *ngFor="let emp of sortedData ;let i = index">
+          <td>{{emp.nombre}}</td>
+          <td>{{emp.correo}}</td>
+          <td>{{emp.telefono}}</td>
+          <td>{{emp.rfc}}</td>
+          <td>{{emp.razonSocial}}</td>
+          <td>{{emp.direccion}}</td>
+          <td>{{emp.colonia}}</td>
+          <td>{{emp.estado}}</td>
+          <td>{{emp.cp}}</td>
+          <td>
+            <button class="button pdf " (click)="this.pdf.GenerarPDF(i)" ><i class="fas fa-file-pdf"></i></button>
+          </td>
+          <td>
+            <button class="button editar" (click)="onEdit(emp)" (click)="editar=!editar"><i class="fas fa-edit"></i></button>
+          </td>
+          <td>
+            <button class="button borrar" (click)="onDelete(emp)"><i class="fas fa-trash-alt"></i></button>
+          </td>
+          
+      </tbody>
+    </table>
+  </div>
+
+</section>

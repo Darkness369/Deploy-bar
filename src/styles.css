@@ -1,0 +1,58 @@
+.login-page {
+    background: -webkit-linear-gradient(top,#DAA520, #442603);
+    height: auto;
+    margin: 0;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.error-page {
+    background-color: rgb(36, 34, 34);
+    height: auto;
+    margin: 0;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.registro-page {
+    background: -webkit-linear-gradient(top,#DAA520, #442603);
+    height: auto;
+    margin: 0;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.principal-page{
+    background: rgb(36, 34, 34);
+    height: auto;
+    margin: 0;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+body {     background: rgb(36, 34, 34);
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+    .reset{
+        transition: transform .2s; 
+        background: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        letter-spacing: 1px;
+        background: #c0911a ;
+        padding: 10px 10px;
+        border-radius: 5px;
+        font-size: 2.5vh;
+      }
+      .reset:hover{
+        transform: scale(1.2);
+        background:  #967011 ;
+      
+      }
+      
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

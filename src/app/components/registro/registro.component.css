@@ -1,0 +1,319 @@
+:root {
+  --amarillo: #DAA520 ;
+  --bronce:#B57F08 ;
+  --cafeclaro:#804F06;
+  --cafe: #6B4000 ;
+  --cafeobscuro:#5E3505;
+  --boton:#1f5b8b;
+  --botonhover:#123653;
+
+  --negro:#000000;
+  --blanco: #ffffff; 
+
+}
+input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid rgba(0, 128, 0, 0);
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  .mui-textfield--float-label > input:-webkit-autofill ~ label {
+    top: -20px;
+    color: #DAA520;
+    font-size: 2.3vh;
+    line-height: 15px;
+    transform: translate(0px, 0px);
+    }
+img{
+max-width: 100%;
+height: 30vh;
+
+}
+i{
+color:rgb(255, 255, 255);
+letter-spacing: 3px;
+font-size: 2.3vh;
+float: left;
+font-weight: bold;
+border:none;
+}
+i:hover{
+  color:rgb(26, 141, 187);
+ letter-spacing: 3px;
+ }
+p{
+
+font-size: 2.5vh;
+}
+.registro{
+  color: white;
+  background-color: #000000bb;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.678), 0 1px 50px rgba(0, 0, 0, 0.705);
+  border-radius: 5px;
+  text-align: center;    
+  padding: 20px 30px 30px 30px;
+  max-width: 100vh;
+  height: auto;
+  margin-top: 3%;
+  margin-left: 26%;
+  margin-right: 25%;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.registro h2
+{
+margin: 0 0 30px;
+color: white;
+text-align: center;
+letter-spacing: 5px;
+font-size: 5vh;
+
+}
+.registro .inputregistro
+{
+position: relative;
+background-color: transparent;
+
+
+}
+.registro .inputregistro input
+{
+  background-color: transparent;
+width: 100%;
+padding: 10px 0;
+font-size: 2vh;
+color: white;
+letter-spacing: 1px;
+margin-bottom: 30px;
+border: none;
+border-bottom: 1px solid white;
+outline: none;
+background: transparent;
+}
+.registro .inputregistro label
+{
+position: absolute;
+top: 0;
+left: 0;
+letter-spacing: 2px;
+padding: 10px 0;
+font-size: 3vh;
+color: white;
+pointer-events: none;
+transition: .5s;
+}
+.registro .inputregistro input:focus ~ label,
+.registro .inputregistro input:valid ~ label
+{
+top: -20px;
+color: #DAA520;
+font-size: 2.3vh;
+}
+.registro input[type="submit"]
+{
+transition: transform .2s; 
+background: transparent;
+border: none;
+outline: none;
+color: white;
+font-weight: bold;
+letter-spacing: 1px;
+background:#DAA520;
+padding: 10px 10px;
+border-radius: 5px;
+font-size: 2.5vh;
+
+}
+.registro input[type="submit"]:hover
+{
+transform: scale(1.2);
+background: #967011;
+
+}
+
+
+
+/* Animaciones */
+.animated {
+-webkit-animation-duration: 2s;
+animation-duration: 2s;
+-webkit-animation-fill-mode: both;
+animation-fill-mode: both;
+}
+
+.fast {
+-webkit-animation-duration: 3.4s;
+animation-duration: 3.4s;
+-webkit-animation-fill-mode: both;
+animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+from {
+  opacity: 0;
+}
+
+to {
+  opacity: 1;
+}
+}
+
+.fadeIn {
+animation-name: fadeIn;
+}
+
+@media screen and (max-width: 700px){
+  
+.registro{
+  margin-top: 5%;
+margin-left: 15%;
+margin-right: 15%;
+}
+
+.lregistro .inputregistro label
+{
+font-size: 2.3vh;
+}
+.registro .inputregistro input:focus ~ label,
+.registro .inputregistro input:valid ~ label
+{  top: -25px;
+font-size: 2.3vh;
+}
+
+}
+@media screen and (max-width: 380px){
+i{
+margin-top: 5%;
+}
+img{
+  max-width: 100%;
+  height: 15vh;
+
+ }
+.registro{
+  margin-top: 8%;
+margin-left: 15%;
+margin-right: 15%;
+}
+
+.registro .inputregistro label
+{
+font-size: 1.5vh;
+}
+.registro .inputregistro input:focus ~ label,
+.registro .inputregistro input:valid ~ label
+{  top: -35px;
+
+font-size: 1.5vh;
+}
+
+
+}
+
+@media screen and (max-width: 1024px){
+  
+  .registro{
+    margin-top: 8%;
+  margin-left: 15%;
+  margin-right: 15%;
+  }
+  
+  .registro .inputregistro label
+  {
+  font-size: 2.1vh;
+  }
+  .registro .inputregistro input:focus ~ label,
+  .registro .inputregistro input:valid ~ label
+  {  top: -25px;
+  font-size: 2.1vh;
+  }
+  
+  }
+
+  @media screen and (max-width: 450px){
+  
+    .registro .inputregistro label
+    {
+    font-size: 2.1vh;
+    }
+    .registro .inputregistro input:focus ~ label,
+    .registro .inputregistro input:valid ~ label
+    {  top: -25px;
+    font-size: 2.1vh;
+    }
+    
+    }
+
+
+    
+.container-checkbox1 {
+  display:block;
+  position:relative;
+  padding-left:40px;
+  margin-bottom:30px;
+  cursor:pointer;
+  font-size:2.3vh;
+  text-align: left;
+  -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+
+}
+
+.container-checkbox1 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.container-checkbox1 .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: rgb(179, 169, 169);
+    transition:all .5s;
+}
+
+.container-checkbox1:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.container-checkbox1 input:checked ~ .checkmark {
+  background-color: #DAA520 ;
+}
+
+.container-checkbox1 .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container-checkbox1 input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container-checkbox1 .checkmark:after {
+  left:9px;
+  top:5px;
+  width:5px;
+  height:10px;
+  border:solid white;
+  border-width:0 3px 3px 0px;
+  -webkit-transform: rotate(45deg);
+   -ms-transform: rotate(45deg);
+  transform:rotate(45deg);
+}

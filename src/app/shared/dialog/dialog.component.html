@@ -1,0 +1,10 @@
+
+<h1  mat-dialog-title><strong> Alerta </strong> <i style="color:red;" class="fas fa-exclamation-triangle"></i></h1>
+<div mat-dialog-content>
+    <p>{{mensaje}}</p>
+</div>
+<div mat-dialog-actions>
+    <button  mat-raised-button color="warn" (click)="cerrarDialogo()">No</button>
+    <button class="colorss" mat-raised-button  (click)="confirmado()" cdkFocusInitial>Sí</button>
+</div>
+

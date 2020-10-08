@@ -1,0 +1,28 @@
+<div class="login animated fadeIn fast">
+  <img src="../assets/img/icon4.png">
+
+      <h2>Iniciar sesión</h2>
+
+      <form  #empleadoForm="ngForm" (submit)="signIn()">
+        <div class="inputlogin mui-textfield mui-textfield--float-label">
+          <input type="email" [(ngModel)]="user.email" name="email" required="">
+          <label>Correo Electrónico:</label>
+        </div>
+        <div class="inputlogin  mui-textfield mui-textfield--float-label">
+          <input type="{{contrasena}}" [(ngModel)]="user.password" name="password" required="">
+          <label>Contraseña:</label>
+        </div>
+        
+        <div class="inputlogin  mui-textfield mui-textfield--float-label">
+          <input type="{{contrasena}}" [(ngModel)]="word" name="permisos" >
+          <label>Admin:</label>
+        </div>
+        <label class="container-checkbox1">
+          <input (click)="monstrarContrasena(!flag)" type="checkbox" >
+        <span class="checkmark">   </span>Mostrar Contraseña
+        </label> 
+        
+        <input type="submit" name=""  [disabled]="!empleadoForm.valid" value="Iniciar sesión">
+        <p >¿No tienes una cuenta?<a routerLink="/registro">Regístrate</a></p>
+      </form>
+    </div>

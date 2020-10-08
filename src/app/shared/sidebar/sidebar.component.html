@@ -1,0 +1,18 @@
+<input type="checkbox" id="check">
+<label for="check">
+  <i class="fas fa-bars" id="btn"></i>
+  <i class="fas fa-times" id="cancel"></i>
+</label>
+<div class="sidebar">
+<header  routerLink="/principal" class="pointer">  <img src="../assets/img/iconSideBar.png">   Menú</header>
+<ul>
+<li class="pointer" routerLink="/clientes"><a><i class="pointer fa fa-users "></i>Clientes</a></li>
+<li class="pointer" routerLink="/inventario" ><a ><i class="pointer fas fa-boxes"></i>Inventario</a></li>
+<li class="pointer" routerLink="/recetas" *ngIf="permiso"><a ><i class="pointer fas fa-book"></i>Recetas</a></li>
+<li class="pointer" routerLink="/analisis"><a ><i class="pointer far fa-chart-bar"></i>Análisis Inv</a></li>
+<li class="pointer" routerLink="/analisisRecetas" *ngIf="permiso"><a ><i class="pointer far fa-chart-bar"></i>Análisis Rec</a></li>
+<li class="pointer" routerLink="/bebidas" *ngIf="permiso"><a ><i class="pointer fa fa-beer"></i>Bebidas</a></li>
+<li class="pointer" routerLink="/ventas"><a ><i class="pointer fas fa-chart-line"></i>Ventas</a></li>
+<li class="pointer" ><a (click)="logout()" ><i class="pointer fas fa-sign-out-alt"></i>Salir</a></li>
+</ul>
+</div>

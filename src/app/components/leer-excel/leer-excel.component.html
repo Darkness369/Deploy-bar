@@ -1,0 +1,57 @@
+<app-sidebar></app-sidebar>
+
+  <div class="contenedor animated fadeIn fast">
+    <h2>Ventas del Excel</h2>
+
+    <mat-form-field>
+      <mat-label><i class="fas fa-search"></i>⠀Buscador</mat-label>
+      <input matInput (keyup)="applyFilter($event.target.value)"class="buscador" placeholder="Buscar">
+    </mat-form-field> 
+    
+
+    <div class="form-group col-md-2">
+      <label for="inputState">Cliente:</label>
+      <a class="form-control"  type="text" name="nombre" #name="ngModel" [(ngModel)]="excelService.nombre">{{excelService.nombre}}</a>
+    </div>
+
+    <div class="tools">
+      <div class="form-row">
+      <button class="button excel">
+        <label>
+          <span class="mdi mdi-file-export"><i class="fas fa-file-excel"></i> Importar</span>
+         <input hidden type="file" (change)="onFileChange($event)" multiple="false">
+        </label>
+      </button>
+      <button class="button excel" style="margin-left: 2.5%;" (click)="sup()">
+        <label> Guardar Ventas</label>
+      </button>
+    </div>
+    </div>
+    <br>
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" id="reportes">
+    
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+      <ng-container matColumnDef="clave" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Clave </th>
+        <td mat-cell *matCellDef="let element"> {{element.clave}} </td>
+      </ng-container>  
+            
+      
+      <ng-container matColumnDef="descripcion" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
+        <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+      </ng-container>      
+
+      <ng-container matColumnDef="cantidad" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad </th>
+        <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+      </ng-container>
+
+    
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>

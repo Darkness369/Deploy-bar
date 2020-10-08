@@ -1,0 +1,32 @@
+<div class="registro animated fadeIn fast">
+  <img src="../assets/img/icon4.png">
+  <h2>Registro</h2>
+  <form [formGroup]="registroForm" (submit)="signUp()">
+    <div class="inputregistro mui-textfield mui-textfield--float-label">
+      <input type="email" name="" formControlName="email" required="">
+      <label>Correo Electrónico:</label>
+    </div>
+    <div class="inputregistro mui-textfield mui-textfield--float-label">
+      <input type="{{contrasena}}" name="" formControlName="password" required="">
+      <label>Contraseña:</label>
+    </div>
+    <div class="inputregistro">
+      <input type="{{contrasena}}" name="" formControlName="confirmpassword" required="">
+      <label>Confirmar Contraseña:</label>
+    </div>
+    <div>
+
+      <label class="container-checkbox1">
+        <input (click)="monstrarContrasena(!flag)" type="checkbox" >
+      <span class="checkmark">   </span>Mostrar Contraseña
+      </label> 
+      
+
+    </div>
+
+    <input type="submit" name="" value="Registrarse">
+    <br>
+
+    <i routerLink="/login" style="cursor: pointer;">◄ Volver</i>
+  </form>
+</div>

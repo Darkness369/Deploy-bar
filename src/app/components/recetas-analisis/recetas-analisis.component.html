@@ -1,0 +1,175 @@
+<app-sidebar></app-sidebar>
+<div class="contenedor animated fadeIn fast">
+  <form #inventarioForm="ngForm">
+    <div class="form-group col-md-3">
+      <label for="inputState">Cliente: </label>
+      <input style="margin-left: -3.5%;" type="text" list="clientes" class="form-control busqueda" name="nombre"
+      [(ngModel)]='selectedCliente' (change)="clientSearch(selectedCliente, inventarioForm)" (change)="applyFilter(selectedCliente)">
+      <datalist  id="clientes">
+        <!-- <select> -->
+          <option  *ngFor="let inventario of datosClientesService.DatosClientes" [value]="inventario.nombre"></option>  
+        <!-- </select> -->
+      </datalist>
+    </div>
+  </form>
+<!--   <mat-form-field>
+    <mat-label><i class="fas fa-search"></i>⠀Buscador</mat-label>
+    <input matInput (keyup)="applyFilter($event.target.value)"class="buscador" placeholder="Ej. Cancelado">
+  </mat-form-field> -->
+  <h2>Analisis de Recetas </h2>
+  
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" id="reportes">
+  
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    <ng-container matColumnDef="nombreCli" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombreCli}} </td>
+    </ng-container>  
+          
+    
+    <ng-container matColumnDef="nombreReceta" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Receta </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombreReceta}} </td>
+    </ng-container>      
+
+    <ng-container matColumnDef="Ver">
+      <th mat-header-cell *matHeaderCellDef> Ver </th>
+      <td mat-cell *matCellDef="let element"><button class="button ver" (click)="onEdit(element)" (click)="abrirVer()"><i class="fas fa-beer"></i></button></td>
+    </ng-container>
+
+    <ng-container matColumnDef="Editar">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <td mat-cell *matCellDef="let element"><button class="button editar" (click)="onEdit(element)" (click)="abrirEditar()"><i class="fas fa-edit"></i></button></td>
+    </ng-container>
+
+    <ng-container matColumnDef="eliminar">
+      <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+      <td mat-cell *matCellDef="let element"> <button class="button borrar" (click)="onDelete(element)"><i class="fas fa-trash-alt"></i></button></td>
+    </ng-container>
+  
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+
+
+<div class="contenedor animated fadeIn fast" *ngIf="!editarReceta">
+    <div class="form-row">
+      <h2 class="centro">Editar Receta</h2>
+      <button class="button x" (click)="editarReceta=!editarReceta"><i class="fas fa-times"></i></button>
+    </div>
+    <br>
+    <form #recetasForm="ngForm" (ngSubmit)="onSubmit(recetasForm)">
+
+      <div class="form-group col-md-2">
+        <label for="inputState">Cliente:</label>
+        <a class="form-control" id="inputState" type="text" name="nombreCli" #name="ngModel" [(ngModel)]="recetasService.selectReceta.nombreCli">{{recetasService.selectReceta.nombreCli}}</a>
+      </div>
+
+
+      <input type="hidden" name="nombreCli" #name="ngModel" [(ngModel)]="recetasService.selectReceta.nombreCli">
+      <div class="form-group">
+        <label for="inputAddress">Nombre de Receta:</label>
+        <input type="text" name="nombreReceta" #name="ngModel" [(ngModel)]='recetasService.selectReceta.nombreReceta' class="form-control" id="nombreReceta" (change)="setRecipeName(nombreReceta)" placeholder="">
+      </div>
+      <div class="form-group">
+      <a type="hidden" class="form-control"  name="idCliente" hidden> {{idCliente}}</a>
+    </div>
+    <div class="form-row" >
+             
+      </div>
+    
+      <div class="row form-group col-md-12" *ngFor="let row of recetasService.selectReceta.ingredientes;let i = index">
+        
+        <div class="form-group col-md-2">
+          <label >{{i+1}}.- Categoría </label>
+            <a type="text" class="form-control">{{row[0]}}</a>
+        </div>
+        <div class="form-group col-md-6">
+          <label >Nombre</label>
+          <a type="text" class="form-control">{{row[1]}}</a>
+        </div>
+        <div class="form-group col-md-1">
+          <label >Presentacion</label>
+            <a type="text" class="form-control">{{row[2]}}</a>
+          </div>
+          <div class="form-group col-md-1">
+            <label >Cant. Oz</label>
+            <input type="text" class="form-control" placeholder="{{row[4]}}" name="nciselec" [(ngModel)]='nciselec[i]'>
+            
+          </div>
+        <div class="form-group col-md-1">
+          <label >Cant. %</label>
+          <a type="text" class="form-control">{{row[3]}}</a>
+        </div>
+        
+        <div class="form-group col-md-1">
+          <label >Codigo</label>
+          <a type="text" class="form-control">{{row[5]}}</a>
+        </div>
+
+  
+      </div>
+      
+      
+      <div class="form-row">
+        <input type="submit" name="" (click)="resetFormReceta(recetasForm)" value="Reset">
+        <input style="margin-left: 15%;" type="submit" value="Guardar">
+      </div>
+    </form>
+  </div>
+
+
+
+  <div class="contenedor animated fadeIn fast" *ngIf="!ver">
+
+    <form #recetasForm="ngForm" (ngSubmit)="onSubmit(recetasForm)">
+      <div class="form-row">
+        <input
+          type="hidden"
+          name="_id"
+          #name="ngModel"
+          [(ngModel)]="recetasService.selectReceta._id"
+        /></div>
+
+        <div class="form-row">
+          <h2 class="centro">Ingredientes</h2>
+          <button class="button x" (click)="ver=!ver"><i class="fas fa-times"></i></button>
+        </div>
+       
+       <br>
+        <div class="row form-group col-md-12" *ngFor="let row of recetasService.selectReceta.ingredientes;let i = index">
+           
+          <div class="form-group col-md-2">
+            <label>{{i+1}}.- Categoría </label>
+            <a type="text" class="form-control">{{row[0]}}</a>
+          </div>
+          <div class="form-group col-md-6">
+            <label >Nombre</label>
+            <a type="text" class="form-control">{{row[1]}}</a>
+          </div>
+          <div class="form-group col-md-1">
+            <label >Presentacion</label>
+            <a type="text" class="form-control">{{row[2]}}</a>
+          </div>
+          <div class="form-group col-md-1">
+            <label >Cant. Oz</label>
+            <a type="text" class="form-control">{{row[4]}}</a>
+          </div>
+          <div class="form-group col-md-1">
+            <label >Cant. %</label>
+            <a type="text" class="form-control">{{row[3]}}</a>
+          </div>
+      
+          <div class="form-group col-md-1">
+            <label >Codigo</label>
+            <a type="text" class="form-control">{{row[5]}}</a>
+          </div>
+        </div>
+      </form>
+  </div>
